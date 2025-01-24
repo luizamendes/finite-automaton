@@ -30,7 +30,7 @@ const baseArgs = {
   transitionFunction,
 };
 
-const automata = new FiniteAutomaton<string>({ ...baseArgs });
+const automaton = new FiniteAutomaton<string>({ ...baseArgs });
 
 describe("FiniteAutomaton", () => {
   describe("Constructor validations", () => {
@@ -66,12 +66,12 @@ describe("FiniteAutomaton", () => {
   });
 
   it("should correctly process valid inputs and reach a final state", () => {
-    const result = automata.process("abba");
+    const result = automaton.process("abba");
     expect(result).toBe("q1");
   });
 
   it("should throw error for invalid characters in input", () => {
-    expect(() => automata.process("aac")).toThrow(
+    expect(() => automaton.process("aac")).toThrow(
       new FiniteAutomatonError({
         name: "invalid_input",
         message: 'Input "aac" contains invalid characters.',
@@ -80,7 +80,7 @@ describe("FiniteAutomaton", () => {
   });
 
   it("should throw error if input is not ending in a final state", () => {
-    const invalidAutomata = new FiniteAutomaton<string>({
+    const invalidAutomaton = new FiniteAutomaton<string>({
       ...baseArgs,
       transitionFunction: new Map([
         ["q0", new Map([["a", "q1"]])],
@@ -88,7 +88,7 @@ describe("FiniteAutomaton", () => {
       ]),
     });
 
-    expect(() => invalidAutomata.process("ab")).toThrow(
+    expect(() => invalidAutomaton.process("ab")).toThrow(
       new FiniteAutomatonError({
         name: "invalid_result",
         message: 'Input "ab" did not end in a final state.',
@@ -97,7 +97,7 @@ describe("FiniteAutomaton", () => {
   });
 
   it("should throw error if next state is not a valid state", () => {
-    const invalidAutomata = new FiniteAutomaton<string>({
+    const invalidAutomaton = new FiniteAutomaton<string>({
       ...baseArgs,
       transitionFunction: new Map([
         ["q0", new Map([["a", "q3"]])],
@@ -105,7 +105,7 @@ describe("FiniteAutomaton", () => {
       ]),
     });
 
-    expect(() => invalidAutomata.process("ab")).toThrow(
+    expect(() => invalidAutomaton.process("ab")).toThrow(
       new FiniteAutomatonError({
         name: "invalid_transition",
         message: 'No valid transition for character "b" from state "q3"',

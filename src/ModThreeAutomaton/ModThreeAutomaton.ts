@@ -2,7 +2,7 @@ import { FiniteAutomaton } from "../FiniteAutomaton";
 import { FiniteAutomatonError } from "../FiniteAutomaton/FiniteAutomatonError";
 
 export type ModThreeState = "S0" | "S1" | "S2";
-function createModThreeAutomata(): FiniteAutomaton<ModThreeState> {
+function createModThreeAutomaton(): FiniteAutomaton<ModThreeState> {
   const states = new Set<ModThreeState>(["S0", "S1", "S2"]);
   const alphabet = new Set(["0", "1"]);
   const initialState: ModThreeState = "S0";
@@ -49,10 +49,10 @@ const remainders: Record<ModThreeState, number> = {
   S2: 2,
 };
 
-const modThreeAutomata = createModThreeAutomata();
+const modThreeAutomaton = createModThreeAutomaton();
 export const modThree = (input: string) => {
   try {
-    const finalState = modThreeAutomata.process(input);
+    const finalState = modThreeAutomaton.process(input);
     return remainders[finalState];
   } catch (err) {
     if (err instanceof FiniteAutomatonError) {

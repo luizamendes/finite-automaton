@@ -1,4 +1,4 @@
-import { modThree } from "./ModThreeAutomata/ModThreeAutomata";
+import { modThree } from "./ModThreeAutomaton/ModThreeAutomaton";
 
 // thirteen => 1
 console.log(modThree("1101"));

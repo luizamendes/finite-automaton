@@ -1,5 +1,5 @@
+import { FiniteAutomatonError } from "./FiniteAutomaton/FiniteAutomatonError";
 import { FiniteAutomaton } from "./FiniteAutomaton";
-import { FiniteAutomatonError } from "../FiniteAutomaton/FiniteAutomatonError";
 
 export type DoesItEndWithAState = "q0" | "q1";
 function createDoesItEndWithAAutomata(): FiniteAutomaton<DoesItEndWithAState> {
