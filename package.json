@@ -5,6 +5,7 @@
   "scripts": {
     "start": "npx ts-node src/index.ts",
     "start:extra": "npx ts-node src/DoesItEndWithA/index.ts",
+    "test-large-input": "npx ts-node src/ModThree/LargeInputTest.ts",
     "test": "jest"
   },
   "keywords": [],

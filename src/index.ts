@@ -6,7 +6,7 @@ try {
   console.log(modThree("1101"));
 } catch (err) {
   if (err instanceof FiniteAutomatonError) {
-    console.log("Err", err.message);
+    console.log("Err:", err.message);
   }
 }
 
@@ -15,7 +15,7 @@ try {
   console.log(modThree("1110"));
 } catch (err) {
   if (err instanceof FiniteAutomatonError) {
-    console.log("Err", err.message);
+    console.log("Err:", err.message);
   }
 }
 
@@ -24,7 +24,7 @@ try {
   console.log(modThree("1111"));
 } catch (err) {
   if (err instanceof FiniteAutomatonError) {
-    console.log("Err", err.message);
+    console.log("Err:", err.message);
   }
 }
 
@@ -33,6 +33,6 @@ try {
   console.log(modThree("Luiza"));
 } catch (err) {
   if (err instanceof FiniteAutomatonError) {
-    console.log("Err", err.message);
+    console.log("Err:", err.message);
   }
 }

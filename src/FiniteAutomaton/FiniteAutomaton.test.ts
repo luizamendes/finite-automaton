@@ -112,4 +112,14 @@ describe("FiniteAutomaton", () => {
       })
     );
   });
+
+  it("if input is an empty string and the initial state is a final state, should return initial state", () => {
+    const automaton = new FiniteAutomaton<string>({
+      ...baseArgs,
+      finalStates: new Set(["q1", "q0"]),
+    });
+
+    const result = automaton.process("");
+    expect(result).toBe("q0");
+  });
 });

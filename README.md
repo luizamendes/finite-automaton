@@ -15,3 +15,5 @@ I also implemented a function that checks if a string ends with 'a' using the Fi
 `npm run start:extra` will run doesItEndWithA examples found in `src/DoesItEndWithA/index.ts`
 
 `npm test` will run all tests
+
+`npm run test-large-input` will run a test with a large input (1M characters) and print the result for modThree and how long it took
