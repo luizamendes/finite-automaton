@@ -8,6 +8,8 @@ I also implemented a function that checks if a string ends with 'a' using the Fi
 
 ## How to run
 
+`npm install` to install the dependencies
+
 `npm start` will run modThree examples in `src/index.ts`
 
 `npm run start:extra` will run doesItEndWithA examples found in `src/DoesItEndWithA/index.ts`
