@@ -1,13 +1,38 @@
-import { modThree } from "./ModThreeAutomaton/ModThreeAutomaton";
+import { FiniteAutomatonError } from "./FiniteAutomaton/FiniteAutomatonError/FiniteAutomatonError";
+import { modThree } from "./ModThree/ModThree";
 
 // thirteen => 1
-console.log(modThree("1101"));
+try {
+  console.log(modThree("1101"));
+} catch (err) {
+  if (err instanceof FiniteAutomatonError) {
+    console.log("Err", err.message);
+  }
+}
 
 // fourteen => 2
-console.log(modThree("1110"));
+try {
+  console.log(modThree("1110"));
+} catch (err) {
+  if (err instanceof FiniteAutomatonError) {
+    console.log("Err", err.message);
+  }
+}
 
 // fifteen => 0
-console.log(modThree("1111"));
+try {
+  console.log(modThree("1111"));
+} catch (err) {
+  if (err instanceof FiniteAutomatonError) {
+    console.log("Err", err.message);
+  }
+}
 
 // invalid entry => error
-console.log(modThree("Luiza"));
+try {
+  console.log(modThree("Luiza"));
+} catch (err) {
+  if (err instanceof FiniteAutomatonError) {
+    console.log("Err", err.message);
+  }
+}

@@ -1,5 +1,5 @@
 import { FiniteAutomaton } from "./FiniteAutomaton";
-import { FiniteAutomatonError } from "./FiniteAutomatonError";
+import { FiniteAutomatonError } from "./FiniteAutomatonError/FiniteAutomatonError";
 
 const states = new Set(["q0", "q1"]);
 const alphabet = new Set(["a", "b"]);

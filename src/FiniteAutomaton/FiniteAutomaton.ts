@@ -1,5 +1,5 @@
-import { FiniteAutomatonError } from "./FiniteAutomatonError";
-import { isSubset } from "./helper";
+import { isSubset } from "../helpers/isSubset/isSubset";
+import { FiniteAutomatonError } from "./";
 
 type Char = string;
 
@@ -36,12 +36,11 @@ export class FiniteAutomaton<T> {
     }
 
     this.finalStates = args.finalStates;
-
     this.transitionFunction = args.transitionFunction;
   }
 
-  private isCharacterInvalid(char: string) {
-    return !this.alphabet.has(char);
+  private isInputInvalid(input: string) {
+    return input.split("").some((char) => !this.alphabet.has(char));
   }
 
   private getNextState(currentState: T, char: Char): T {
@@ -56,15 +55,16 @@ export class FiniteAutomaton<T> {
   }
 
   process(input: string): T {
+    if (this.isInputInvalid(input)) {
+      throw new FiniteAutomatonError({
+        name: "invalid_input",
+        message: `Input "${input}" contains invalid characters.`,
+      });
+    }
+
     let currentState = this.initialState;
 
     for (const char of input) {
-      if (this.isCharacterInvalid(char)) {
-        throw new FiniteAutomatonError({
-          name: "invalid_input",
-          message: `Input "${input}" contains invalid characters.`,
-        });
-      }
       currentState = this.getNextState(currentState, char);
     }
 

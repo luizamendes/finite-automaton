@@ -1,5 +1,4 @@
 import { FiniteAutomaton } from "../FiniteAutomaton";
-import { FiniteAutomatonError } from "../FiniteAutomaton/FiniteAutomatonError";
 
 export type ModThreeState = "S0" | "S1" | "S2";
 function createModThreeAutomaton(): FiniteAutomaton<ModThreeState> {
@@ -51,12 +50,6 @@ const remainders: Record<ModThreeState, number> = {
 
 const modThreeAutomaton = createModThreeAutomaton();
 export const modThree = (input: string) => {
-  try {
-    const finalState = modThreeAutomaton.process(input);
-    return remainders[finalState];
-  } catch (err) {
-    if (err instanceof FiniteAutomatonError) {
-      console.log(err.message);
-    }
-  }
+  const finalState = modThreeAutomaton.process(input);
+  return remainders[finalState];
 };

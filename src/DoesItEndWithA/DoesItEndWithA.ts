@@ -1,8 +1,7 @@
-import { FiniteAutomatonError } from "./FiniteAutomaton/FiniteAutomatonError";
-import { FiniteAutomaton } from "./FiniteAutomaton";
+import { FiniteAutomaton, FiniteAutomatonError } from "../FiniteAutomaton";
 
 export type DoesItEndWithAState = "q0" | "q1";
-function createDoesItEndWithAAutomata(): FiniteAutomaton<DoesItEndWithAState> {
+function createDoesItEndWithAAutomaton(): FiniteAutomaton<DoesItEndWithAState> {
   const states = new Set<DoesItEndWithAState>(["q0", "q1"]);
   const alphabet = new Set(["a", "b"]);
   const initialState: DoesItEndWithAState = "q0";
@@ -37,14 +36,15 @@ function createDoesItEndWithAAutomata(): FiniteAutomaton<DoesItEndWithAState> {
   });
 }
 
-const doesItEndWithAAutomata = createDoesItEndWithAAutomata();
+const doesItEndWithAAutomaton = createDoesItEndWithAAutomaton();
 export const doesInputEndWithA = (input: string) => {
   try {
-    doesItEndWithAAutomata.process(input);
+    doesItEndWithAAutomaton.process(input);
     return true;
   } catch (err) {
     if (err instanceof FiniteAutomatonError) {
-      console.log(err.message);
+      if (err.name === "invalid_result") return false;
+      throw err;
     }
   }
 };
